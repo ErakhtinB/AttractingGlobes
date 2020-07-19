@@ -16,15 +16,14 @@ class PaintWidget : public QWidget
     Q_OBJECT
 private:
     CountingThread MyThread;
-    QMutex *mutex;
-    std::list<Circle> *list;
+    QMutex mutex;
+    std::list<Circle> list;
     std::list<Circle>::iterator ballIt;
-    QTimer *TimerUpdate;
+    QTimer timerUpdate;
     double updateTime;
     bool left_pressed = false;
 public:
     PaintWidget(int obj_num, double updateTimeMs);
-    ~PaintWidget();
     void AddRandomBall();
     void AddBallXY(int x, int y);
     void paintEvent(QPaintEvent *);

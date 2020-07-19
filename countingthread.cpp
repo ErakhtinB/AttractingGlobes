@@ -25,11 +25,7 @@ void CountingThread::SetMutex(QMutex *mutexThread)
 
 void CountingThread::TotalCounter()
 {
-    if (!mutex->tryLock(100))
-    {
-        emit finished();
-        return;
-    }
+    mutex->lock();
 
     std::list<Circle>::iterator it1 = list->begin();
     while (it1 != list->end())
